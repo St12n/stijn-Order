@@ -32,9 +32,9 @@
 
 The functional requirements are written down as stories.
 
-### Story 1: Create a customer account
-As an unregistered user I want to create a customer account so I can become recognized within the system.
-- Upon creation of a customer, the following data should be provided:
+### Story 1: Create a user account
+As an unregistered user I want to create a user account so I can become recognized within the system.
+- Upon creation of a user, the following data should be provided:
     - First name
     - Last name
     - Email address
@@ -50,16 +50,16 @@ As an admin user I want to add an item so I can expand the list of available ite
     - Amount (stock)
 
 ### Story 3: Order items
-As a customer I want to order one or more items.
+As a user I want to order one or more items.
 - An `Order` contains one or more **item groups**
 - An `item group` contains a selected item (id), an amount, and a shipping date.
     - The shipping date should be calculated automatically:
         - When we have the item in stock, the shipping date is set to the next day (of the order)
         - Otherwise the shipping date should be set to next week (day of order + 7 days)
-- The total price should be calculated and shown to the customer when ordering.
+- The total price should be calculated and shown to the user when ordering.
 - Question: should an order keep a reference to an item or should it make some sort of copy?
     - Tip: The the price of the item can change over time... What implications might this have?
-- Obviously, we also need to keep track of who made the order (it has to be a known customer)
+- Obviously, we also need to keep track of who made the order (it has to be a known user)
 
 ### Story 4: Update an item
 As an admin user I want to update an item so I can keep my list of available items up to date.
@@ -70,7 +70,7 @@ As an admin user I want to update an item so I can keep my list of available ite
     - Amount (stock)
 
 ### Story 5: View report of orders
-As a customer I want to see a report of all my orders so I can get an overview of what I ordered and how much it cost.
+As a user I want to see a report of all my orders so I can get an overview of what I ordered and how much it cost.
 - The report should contain per order:
     - The id(entifier) of the order
     - Per item group of the order
@@ -81,18 +81,18 @@ As a customer I want to see a report of all my orders so I can get an overview o
 - The total price of all orders
 
 ### Story 6: Reorder an existing order
-As a customer I want to be able to reorder an existing order so I can quickly place a recurring order.
+As a user I want to be able to reorder an existing order so I can quickly place a recurring order.
 - Make sure this can be done by providing an order id(entifier).
-- A customer can only reorder one of his own orders.
+- A user can only reorder one of his own orders.
 - The actual price of the item should be used, not the price the item had in the existing order.
 
 ### Story 7: View all customers
 As an admin user I want to view all customers.
 - List all customers known by the system
 
-### Story 8: View a single customer
+### Story 8: View a single user
 As an admin user I want to view the details of a single customers.
-- Based on the customer identifier
+- Based on the user identifier
 
 ### Story 9: Items Shipping today
 As an admin user I want to view all orders that contain items that should be shipped today.

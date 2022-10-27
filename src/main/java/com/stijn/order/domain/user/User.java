@@ -1,18 +1,20 @@
 package com.stijn.order.domain.user;
 
-public class Customer {
+public class User {
     private final String firstname;
     private final String lastname;
     private final String email;
     private final PhoneNumber phoneNumber;
     private final Address address;
+    private final Role role;
 
-    public Customer(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address) {
+    public User(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address, Role role) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.role = role;
     }
 
     public String getFirstname() {
@@ -34,4 +36,9 @@ public class Customer {
     public Address getAddress() {
         return address;
     }
+
+    public Role getRole() {
+        return role;
+    }
 }
+
