@@ -59,4 +59,5 @@ public class UserIntegrationTest {
         assertThat(result.getAddress()).isEqualTo(given.getAddress());
         assertThat(result.getPhoneNumber()).isEqualTo(given.getPhoneNumber());
     }
+
 }

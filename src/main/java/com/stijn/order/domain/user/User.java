@@ -49,6 +49,17 @@ public class User {
         return userID;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID='" + userID + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", address=" + address +
+                ", role=" + role +
+                '}';
+    }
 }
 

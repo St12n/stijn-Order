@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,12 +20,14 @@ public class UserRepository {
     }
 
     public void saveUser(User newUser) {
-        if (!isEmailOfMemberUnique(newUser.getEmail())){
+        if (!isEmailOfMemberUnique(newUser.getEmail())) {
             throw new IllegalArgumentException("This email address is already linked to another account.");
         }
-        if (!isPhoneNumberOfMemberUnique(newUser.getPhoneNumber())){
+        if (!isPhoneNumberOfMemberUnique(newUser.getPhoneNumber())) {
             throw new IllegalArgumentException("This phone number is already linked to another account.");
         }
+        userRepositoryByID.put(newUser.getUserID(), newUser);
+        log.info("POST -> ".concat(newUser.toString()));
     }
 
     public boolean isEmailOfMemberUnique(String email) {
@@ -43,5 +46,9 @@ public class UserRepository {
             }
         }
         return true;
+    }
+
+    public Collection<User> getAll() {
+        return userRepositoryByID.values();
     }
 }

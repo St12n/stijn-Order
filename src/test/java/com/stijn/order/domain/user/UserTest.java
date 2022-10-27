@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
 
+
     @Test
     void whenCreatingCustomer_GetAllFields() {
         User user = new User(
