@@ -13,7 +13,7 @@ class UserTest {
                 "Vercruysse",
                 "timv@test.be",
                 new PhoneNumber("0032", "0478945"),
-                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.CUSTOMER);
+                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
 
         assertThat(user.getFirstname().equals("Tim"));
         assertThat(user.getLastname().equals("Vercruysse"));

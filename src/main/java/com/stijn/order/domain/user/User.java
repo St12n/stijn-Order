@@ -1,6 +1,9 @@
 package com.stijn.order.domain.user;
 
+import java.util.UUID;
+
 public class User {
+    private final String userID;
     private final String firstname;
     private final String lastname;
     private final String email;
@@ -9,6 +12,7 @@ public class User {
     private final Role role;
 
     public User(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address, Role role) {
+        this.userID = UUID.randomUUID().toString();
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -40,5 +44,11 @@ public class User {
     public Role getRole() {
         return role;
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
+
 }
 
