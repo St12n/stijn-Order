@@ -31,6 +31,14 @@ public class PhoneNumber {
         return localPhoneNumber;
     }
 
+    public String getCountrycode() {
+        return countrycode;
+    }
+
+    public String getLocalPhoneNumber() {
+        return localPhoneNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

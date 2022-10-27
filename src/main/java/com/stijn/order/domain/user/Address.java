@@ -21,6 +21,26 @@ public class Address {
         this(null, null, null, city, null);
     }
 
+    public String getStreetname() {
+        return streetname;
+    }
+
+    public String getHousenumber() {
+        return housenumber;
+    }
+
+    public String getBoxNumber() {
+        return boxNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
