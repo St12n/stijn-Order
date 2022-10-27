@@ -1,6 +1,5 @@
 package com.stijn.order.domain.user;
 
-import com.stijn.order.service.user.dto.CreateUserDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

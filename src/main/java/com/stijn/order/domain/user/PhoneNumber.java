@@ -18,6 +18,9 @@ public class PhoneNumber {
         if (countrycode.length() == 3 && countrycode.charAt(0) != '+') {
             throw new IllegalArgumentException("please provide a correct country code");
         }
+        if (countrycode.length() == 4 && countrycode.charAt(0) != '0') {
+            throw new IllegalArgumentException("please provide a correct country code");
+        }
         if (countrycode.length() > 4) {
             throw new IllegalArgumentException("please provide a correct country code");
         }
