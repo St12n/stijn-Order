@@ -36,6 +36,26 @@ class UserTest {
     }
 
     @Test
+    void whenCreatingTwosomeAddresses_AddressesAreEqual() {
+        User user = new User(
+                "Tim",
+                "Vercruysse",
+                "timv@test.be",
+                new PhoneNumber("0032", "0478945"),
+                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
+
+        User user2 = new User(
+                "Tim",
+                "Vercruysse",
+                "timv2@test.be",
+                new PhoneNumber("0032", "0478944"),
+                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
+
+        assertThat(user.getAddress().hashCode()).isEqualTo(user2.getAddress().hashCode());
+
+    }
+
+    @Test
     void whenCreatingCustomerWithSameAddress_AddressIsEqual() {
         User user = new User(
                 "Tim",

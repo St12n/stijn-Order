@@ -7,10 +7,17 @@ public class Item {
     private StockAmount amount;
 
     public Item(String name, String description, Price price, StockAmount amount) {
-        this.name = name;
-        this.description = description;
+        this.name = verifyNameOrDescription(name);
+        this.description = verifyNameOrDescription(description);
         this.price = price;
         this.amount = amount;
+    }
+
+    private String verifyNameOrDescription(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Provide a name and a description for the item");
+        }
+        return input;
     }
 
     public String getName() {

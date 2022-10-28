@@ -19,6 +19,20 @@ class ItemTest {
     }
 
     @Test
+    void whenCreatingItemWithNoName_GetExceptionName() {
+        assertThatThrownBy(() -> new Item(null, "description", new Price(10, PriceCurrency.EUR),new StockAmount(100, StockUnit.KG)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Provide a name and a description for the item");
+    }
+
+    @Test
+    void whenCreatingItemWithNoDescription_GetExceptionNameDescription() {
+        assertThatThrownBy(() -> new Item("name", null, new Price(10, PriceCurrency.EUR),new StockAmount(100, StockUnit.KG)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Provide a name and a description for the item");
+    }
+
+    @Test
     void whenCreatingItemWithNoPrice_GetExceptionPrice() {
         assertThatThrownBy(() -> new Item("name", "description", new Price(0, PriceCurrency.EUR),new StockAmount(100, StockUnit.KG)))
                 .isInstanceOf(IllegalArgumentException.class)

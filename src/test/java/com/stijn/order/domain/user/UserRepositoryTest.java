@@ -14,6 +14,19 @@ class UserRepositoryTest {
     void givenAValidUser_WhenSaveUserToRepo_ThenAlUsersContainsGivenUser() {
         UserRepository userRepository = new UserRepository();
         User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
+        User newUser2 = new User("Test", "Lastname", "test@Test2.be", new PhoneNumber("+32", "123456788"), new Address("Aalst"), Role.USER);
+        userRepository.saveUser(newUser);
+        userRepository.saveUser(newUser2);
+        assertThat(userRepository.getAll()).isNotNull();
+        assertThat(userRepository.getAll()).isNotEmpty();
+        assertThat(userRepository.getAll()).contains(newUser);
+        assertThat(userRepository.getAll()).contains(newUser2);
+    }
+
+    @Test
+    void givenAValidUser_WhenDifferntPhoneAndEmail_ThenAllUsersContainsGivenUser() {
+        UserRepository userRepository = new UserRepository();
+        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
         userRepository.saveUser(newUser);
         assertThat(userRepository.getAll()).isNotNull();
         assertThat(userRepository.getAll()).isNotEmpty();
