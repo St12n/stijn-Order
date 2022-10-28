@@ -1,5 +1,6 @@
 package com.stijn.order.api;
 
+import com.stijn.order.Application;
 import com.stijn.order.domain.user.UserRepository;
 import com.stijn.order.service.user.UserMapper;
 import com.stijn.order.service.user.dto.CreateUserDTO;
@@ -25,6 +26,10 @@ public class UserIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Test
+    void main() {
+        Application.main(new String[] {});
+    }
 
     @Test
     void createAUser() {
