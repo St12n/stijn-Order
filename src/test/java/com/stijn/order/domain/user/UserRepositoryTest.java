@@ -19,8 +19,8 @@ class UserRepositoryTest {
     @Test
     void givenAValidUser_WhenSaveUserToRepo_ThenAlUsersContainsGivenUser() {
         UserRepository userRepository = new UserRepository();
-        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
-        User newUser2 = new User("Test", "Lastname", "test@Test2.be", new PhoneNumber("+32", "123456788"), new Address("Aalst"), Role.USER);
+        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER, "password");
+        User newUser2 = new User("Test", "Lastname", "test@Test2.be", new PhoneNumber("+32", "123456788"), new Address("Aalst"), Role.USER, "password");
         userRepository.saveUser(newUser);
         userRepository.saveUser(newUser2);
         assertThat(userRepository.getAll()).isNotNull();
@@ -32,7 +32,7 @@ class UserRepositoryTest {
     @Test
     void givenAValidUser_WhenDifferntPhoneAndEmail_ThenAllUsersContainsGivenUser() {
         UserRepository userRepository = new UserRepository();
-        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
+        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER, "password");
         userRepository.saveUser(newUser);
         assertThat(userRepository.getAll()).isNotNull();
         assertThat(userRepository.getAll()).isNotEmpty();
@@ -42,8 +42,8 @@ class UserRepositoryTest {
     @Test
     void givenAUserWithEmailAlreadyInUse_ThenGetException() {
         UserRepository userRepository = new UserRepository();
-        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
-        User newUser2 = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "8974457"), new Address("Aalst"), Role.USER);
+        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER, "password");
+        User newUser2 = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "8974457"), new Address("Aalst"), Role.USER, "password");
         userRepository.saveUser(newUser);
         assertThatThrownBy(() -> userRepository.saveUser(newUser2))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -53,8 +53,8 @@ class UserRepositoryTest {
     @Test
     void givenAUserWithPhoneNumberAlreadyInUse_ThenGetException() {
         UserRepository userRepository = new UserRepository();
-        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
-        User newUser2 = new User("Test", "Lastname", "test@Test2.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);
+        User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER, "password");
+        User newUser2 = new User("Test", "Lastname", "test@Test2.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER, "password");
         userRepository.saveUser(newUser);
         assertThatThrownBy(() -> userRepository.saveUser(newUser2))
                 .isInstanceOf(IllegalArgumentException.class)

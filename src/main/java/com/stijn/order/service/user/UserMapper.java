@@ -20,6 +20,6 @@ public class UserMapper {
     }
 
     public User mapCreateUserDTOToUser(CreateUserDTO createUserDTO) {
-        return new User(createUserDTO.getFirstname(), createUserDTO.getLastname(), createUserDTO.getEmail(), new PhoneNumber(createUserDTO.getCountryCode(), createUserDTO.getLocalPhoneNumber()), new Address(createUserDTO.getStreetname(), createUserDTO.getHousenumber(), createUserDTO.getBoxNumber(), createUserDTO.getCity(), createUserDTO.getPostalCode()), Role.USER);
+        return new User(createUserDTO.getFirstname(), createUserDTO.getLastname(), createUserDTO.getEmail(), new PhoneNumber(createUserDTO.getCountryCode(), createUserDTO.getLocalPhoneNumber()), new Address(createUserDTO.getStreetname(), createUserDTO.getHousenumber(), createUserDTO.getBoxNumber(), createUserDTO.getCity(), createUserDTO.getPostalCode()), Role.USER,createUserDTO.getPassword());
     }
 }

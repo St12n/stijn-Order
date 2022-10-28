@@ -1,6 +1,7 @@
 package com.stijn.order.domain.user;
 
 import com.stijn.order.domain.user.fields.Address;
+import com.stijn.order.domain.user.fields.Feature;
 import com.stijn.order.domain.user.fields.PhoneNumber;
 import com.stijn.order.domain.user.fields.Role;
 
@@ -14,8 +15,9 @@ public class User {
     private final PhoneNumber phoneNumber;
     private final Address address;
     private final Role role;
+    private final String password;
 
-    public User(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address, Role role) {
+    public User(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address, Role role, String password) {
         this.userID = UUID.randomUUID().toString();
         this.firstname = firstname;
         this.lastname = lastname;
@@ -23,8 +25,16 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.role = role;
+        this.password = password;
     }
 
+    public boolean doesPasswordMatch(String passwordToMatch) {
+        return password.equals(passwordToMatch);
+    }
+
+    public boolean canHaveAccessTo(Feature feature) {
+        return role.containsFeature(feature);
+    }
     public String getFirstname() {
         return firstname;
     }

@@ -24,7 +24,7 @@ public class UserRepository {
     }
 
     public void addAdminToRepository() {
-        User admin1 = new User("Minh","The Admin", "m.admin@order.be", new PhoneNumber("+32","457964521"),new Address("Brussels"), Role.ADMIN);
+        User admin1 = new User("Minh","The Admin", "m.admin@order.be", new PhoneNumber("+32","457964521"),new Address("Brussels"), Role.ADMIN, "admin");
         userRepositoryByID.put(admin1.getUserID(), admin1);
     }
 
@@ -39,6 +39,15 @@ public class UserRepository {
         }
         userRepositoryByID.put(newUser.getUserID(), newUser);
         log.info("POST -> ".concat(newUser.toString()));
+    }
+
+    public User getUserByEmail(String email) {
+        for (User user: userRepositoryByID.values()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        throw new IllegalArgumentException("Username ".concat(email).concat(" was not found."));
     }
 
     public boolean isEmailOfMemberUnique(String email) {

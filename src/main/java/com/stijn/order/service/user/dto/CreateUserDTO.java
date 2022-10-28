@@ -7,6 +7,7 @@ public class CreateUserDTO {
     private String firstname;
     private String lastname;
     private String email;
+    private String password;
     private String countryCode;
     private String localPhoneNumber;
     private String streetname;
@@ -46,6 +47,15 @@ public class CreateUserDTO {
 
     public CreateUserDTO setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public CreateUserDTO setPassword(String password) {
+        this.password = password;
         return this;
     }
 
