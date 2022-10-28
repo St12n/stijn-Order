@@ -30,12 +30,6 @@ public class UserIntegrationTest {
 
 
     @Test
-    void main() {
-        Application.main(new String[]{});
-        Assertions.assertTrue(true);
-    }
-
-    @Test
     void createAUser() {
         CreateUserDTO given = new CreateUserDTO()
                 .setFirstname("Jeff")
