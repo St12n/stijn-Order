@@ -1,4 +1,4 @@
-package com.stijn.order.domain.user;
+package com.stijn.order.domain.user.fields;
 
 import java.util.Objects;
 

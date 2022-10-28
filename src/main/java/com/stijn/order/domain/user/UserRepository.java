@@ -1,5 +1,6 @@
 package com.stijn.order.domain.user;
 
+import com.stijn.order.domain.user.fields.PhoneNumber;
 import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

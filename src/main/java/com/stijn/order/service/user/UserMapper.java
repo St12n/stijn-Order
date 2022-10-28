@@ -1,8 +1,8 @@
 package com.stijn.order.service.user;
 
-import com.stijn.order.domain.user.Address;
-import com.stijn.order.domain.user.PhoneNumber;
-import com.stijn.order.domain.user.Role;
+import com.stijn.order.domain.user.fields.Address;
+import com.stijn.order.domain.user.fields.PhoneNumber;
+import com.stijn.order.domain.user.fields.Role;
 import com.stijn.order.domain.user.User;
 import com.stijn.order.service.user.dto.CreateUserDTO;
 import com.stijn.order.service.user.dto.UserDTO;

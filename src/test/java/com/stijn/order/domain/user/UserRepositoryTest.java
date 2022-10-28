@@ -1,5 +1,8 @@
 package com.stijn.order.domain.user;
 
+import com.stijn.order.domain.user.fields.Address;
+import com.stijn.order.domain.user.fields.PhoneNumber;
+import com.stijn.order.domain.user.fields.Role;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

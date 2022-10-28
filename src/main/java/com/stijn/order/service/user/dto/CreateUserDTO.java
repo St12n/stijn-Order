@@ -1,7 +1,6 @@
 package com.stijn.order.service.user.dto;
 
-import com.stijn.order.domain.user.Address;
-import com.stijn.order.domain.user.PhoneNumber;
+import com.stijn.order.domain.user.fields.Address;
 
 public class CreateUserDTO {
 

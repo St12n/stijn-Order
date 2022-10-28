@@ -1,8 +1,5 @@
 package com.stijn.order.service.user.dto;
 
-import com.stijn.order.domain.user.Address;
-import com.stijn.order.domain.user.PhoneNumber;
-
 public class UserDTO {
     private String firstname;
     private String lastname;
