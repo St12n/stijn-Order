@@ -11,6 +11,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class UserRepositoryTest {
 
     @Test
+    void givenNewRepo_AdminIsThere() {
+        UserRepository userRepository = new UserRepository();
+        assertThat(userRepository.getAll().size()).isEqualTo(1);
+    }
+
+    @Test
     void givenAValidUser_WhenSaveUserToRepo_ThenAlUsersContainsGivenUser() {
         UserRepository userRepository = new UserRepository();
         User newUser = new User("Test", "Lastname", "test@Test.be", new PhoneNumber("+32", "123456789"), new Address("Aalst"), Role.USER);

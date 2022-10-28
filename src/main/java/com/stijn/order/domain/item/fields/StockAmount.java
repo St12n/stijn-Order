@@ -1,4 +1,4 @@
-package com.stijn.order.domain.item;
+package com.stijn.order.domain.item.fields;
 
 public class StockAmount {
     private final double amountInStock;
@@ -29,5 +29,10 @@ public class StockAmount {
 
     public StockUnit getStockUnit() {
         return stockUnit;
+    }
+
+    @Override
+    public String toString() {
+        return "StockAmount{" + amountInStock + " " + stockUnit + "}";
     }
 }

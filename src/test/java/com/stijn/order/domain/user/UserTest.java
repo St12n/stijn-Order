@@ -52,7 +52,25 @@ class UserTest {
                 new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
 
         assertThat(user.getAddress().hashCode()).isEqualTo(user2.getAddress().hashCode());
+    }
 
+    @Test
+    void whenCreatingTwoSamePhoneNumbers_PhoneNumbersAreEqual() {
+        User user = new User(
+                "Tim",
+                "Vercruysse",
+                "timv@test.be",
+                new PhoneNumber("0032", "0478945"),
+                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
+
+        User user2 = new User(
+                "Tim",
+                "Vercruysse",
+                "timv2@test.be",
+                new PhoneNumber("0032", "0478945"),
+                new Address("Timstraat", "123a", "1", "Leuven", "4568"), Role.USER);
+
+        assertThat(user.getPhoneNumber().hashCode()).isEqualTo(user2.getPhoneNumber().hashCode());
     }
 
     @Test

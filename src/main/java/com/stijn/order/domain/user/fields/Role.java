@@ -5,7 +5,8 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public enum Role {
-    USER(Lists.newArrayList(Feature.LOGIN));
+    USER(Lists.newArrayList(Feature.LOGIN)),
+    ADMIN(Lists.newArrayList(Feature.LOGIN,Feature.CREATE_ITEM));
 
     private final List<Feature> features;
 

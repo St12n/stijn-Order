@@ -1,5 +1,9 @@
 package com.stijn.order.domain.item;
 
+import com.stijn.order.domain.item.fields.Price;
+import com.stijn.order.domain.item.fields.PriceCurrency;
+import com.stijn.order.domain.item.fields.StockAmount;
+import com.stijn.order.domain.item.fields.StockUnit;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

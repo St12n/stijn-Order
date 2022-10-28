@@ -1,4 +1,4 @@
-package com.stijn.order.domain.item;
+package com.stijn.order.domain.item.fields;
 
 public class Price {
     private final double priceAmount;
@@ -29,5 +29,10 @@ public class Price {
 
     public PriceCurrency getPriceCurrency() {
         return priceCurrency;
+    }
+
+    @Override
+    public String toString() {
+        return "Price{" +priceAmount + " " + priceCurrency +'}';
     }
 }
