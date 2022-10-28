@@ -10,6 +10,12 @@ class ItemTest {
     void whenCreatingItem_GetAllFields() {
         Item item = new Item("name", "description", new Price(10, PriceCurrency.EUR),new StockAmount(100, StockUnit.KG));
         assertThat(item).isNotNull();
+        assertThat(item.getName()).isEqualTo("name");
+        assertThat(item.getDescription()).isEqualTo("description");
+        assertThat(item.getPrice().getPriceAmount()).isEqualTo(10);
+        assertThat(item.getPrice().getPriceCurrency()).isEqualTo(PriceCurrency.EUR);
+        assertThat(item.getAmount().getAmountInStock()).isEqualTo(100);
+        assertThat(item.getAmount().getStockUnit()).isEqualTo(StockUnit.KG);
     }
 
     @Test

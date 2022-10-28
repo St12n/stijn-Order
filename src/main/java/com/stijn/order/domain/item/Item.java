@@ -13,4 +13,19 @@ public class Item {
         this.amount = amount;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
+
+    public StockAmount getAmount() {
+        return amount;
+    }
 }
