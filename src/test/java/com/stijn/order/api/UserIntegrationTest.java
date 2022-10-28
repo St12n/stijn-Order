@@ -6,12 +6,14 @@ import com.stijn.order.service.user.UserMapper;
 import com.stijn.order.service.user.dto.CreateUserDTO;
 import com.stijn.order.service.user.dto.UserDTO;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,9 +28,11 @@ public class UserIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
+
     @Test
-    public void main() {
-        Application.main(new String[] {});
+    void main() {
+        Application.main(new String[]{});
+        Assertions.assertTrue(true);
     }
 
     @Test
