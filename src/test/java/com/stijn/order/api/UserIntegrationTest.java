@@ -27,7 +27,7 @@ public class UserIntegrationTest {
     private UserRepository userRepository;
 
     @Test
-    void main() {
+    public void main() {
         Application.main(new String[] {});
     }
 
