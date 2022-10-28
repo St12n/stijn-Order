@@ -1,5 +1,7 @@
 package com.stijn.order.service.user;
 
+import com.stijn.order.domain.user.Address;
+import com.stijn.order.domain.user.PhoneNumber;
 import com.stijn.order.domain.user.Role;
 import com.stijn.order.domain.user.User;
 import com.stijn.order.service.user.dto.CreateUserDTO;
@@ -12,11 +14,12 @@ public class UserMapper {
                 .setFirstname(user.getFirstname())
                 .setLastname(user.getLastname())
                 .setEmail(user.getEmail())
-                .setPhoneNumber(user.getPhoneNumber())
-                .setAddress(user.getAddress());
+                .setCountryCode(user.getPhoneNumber().getCountrycode())
+                .setLocalPhoneNumber(user.getPhoneNumber().getLocalPhoneNumber())
+                .setAddress(user.getAddress().toString());
     }
 
     public User mapCreateUserDTOToUser(CreateUserDTO createUserDTO) {
-        return new User(createUserDTO.getFirstname(), createUserDTO.getLastname(), createUserDTO.getEmail(), createUserDTO.getPhoneNumber(), createUserDTO.getAddress(), Role.USER);
+        return new User(createUserDTO.getFirstname(), createUserDTO.getLastname(), createUserDTO.getEmail(), new PhoneNumber(createUserDTO.getCountryCode(), createUserDTO.getLocalPhoneNumber()), new Address(createUserDTO.getStreetname(), createUserDTO.getHousenumber(), createUserDTO.getBoxNumber(), createUserDTO.getCity(), createUserDTO.getPostalCode()), Role.USER);
     }
 }

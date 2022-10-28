@@ -7,8 +7,9 @@ public class UserDTO {
     private String firstname;
     private String lastname;
     private String email;
-    private PhoneNumber phoneNumber;
-    private Address address;
+    private String countryCode;
+    private String localPhoneNumber;
+    private String address;
 
     public UserDTO setFirstname(String firstname) {
         this.firstname = firstname;
@@ -25,12 +26,17 @@ public class UserDTO {
         return this;
     }
 
-    public UserDTO setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public UserDTO setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
         return this;
     }
 
-    public UserDTO setAddress(Address address) {
+    public UserDTO setLocalPhoneNumber(String localPhoneNumber) {
+        this.localPhoneNumber = localPhoneNumber;
+        return this;
+    }
+
+    public UserDTO setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -47,11 +53,15 @@ public class UserDTO {
         return email;
     }
 
-    public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public Address getAddress() {
+    public String getLocalPhoneNumber() {
+        return localPhoneNumber;
+    }
+
+    public String getAddress() {
         return address;
     }
 }
