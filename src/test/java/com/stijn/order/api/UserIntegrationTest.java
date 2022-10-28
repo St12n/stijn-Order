@@ -1,12 +1,10 @@
 package com.stijn.order.api;
 
-import com.stijn.order.Application;
 import com.stijn.order.domain.user.UserRepository;
 import com.stijn.order.service.user.UserMapper;
 import com.stijn.order.service.user.dto.CreateUserDTO;
 import com.stijn.order.service.user.dto.UserDTO;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
