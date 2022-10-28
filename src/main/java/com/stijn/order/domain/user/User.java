@@ -63,6 +63,10 @@ public class User {
         return userID;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return "User{" +

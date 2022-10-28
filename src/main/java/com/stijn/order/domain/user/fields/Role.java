@@ -6,6 +6,7 @@ import java.util.List;
 
 public enum Role {
     USER(Lists.newArrayList(Feature.LOGIN)),
+    TEST(Lists.newArrayList(Feature.TEST)),
     ADMIN(Lists.newArrayList(Feature.LOGIN,Feature.CREATE_ITEM));
 
     private final List<Feature> features;

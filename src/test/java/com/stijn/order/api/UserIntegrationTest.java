@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 
+import java.util.Base64;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -35,7 +37,8 @@ public class UserIntegrationTest {
                 .setEmail("jefkevermeulen@vtm.be")
                 .setCountryCode("+32")
                 .setLocalPhoneNumber("123456789")
-                .setCity("Aalst");
+                .setCity("Aalst")
+                .setPassword("password");
 
         UserDTO result = RestAssured
                 .given()
