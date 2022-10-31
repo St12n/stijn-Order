@@ -70,4 +70,16 @@ class ItemTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Provide the stock unit.");
     }
+
+    @Test
+    void whenCreatingItemWithPriceNull_GetException() {
+        assertThatThrownBy(() -> new Item("name", "description", null,new StockAmount(100, null)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenCreatingItemWithStockAmountNull_GetException() {
+        assertThatThrownBy(() -> new Item("name", "description", null,new StockAmount(100, null)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

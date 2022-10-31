@@ -126,6 +126,6 @@ public class SecurityIntegrationTest {
                 .get("/login")
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.FORBIDDEN.value());
+                .statusCode(HttpStatus.UNAUTHORIZED.value());
     }
 }

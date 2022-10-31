@@ -9,15 +9,15 @@ public class Item {
     private final String ItemId;
     private final String name;
     private final String description;
-    private Price price;
-    private StockAmount amount;
+    private final Price price;
+    private final StockAmount amount;
 
     public Item(String name, String description, Price price, StockAmount amount) {
         this.ItemId = UUID.randomUUID().toString();
         this.name = verifyNameOrDescription(name);
         this.description = verifyNameOrDescription(description);
-        this.price = price;
-        this.amount = amount;
+        this.price = verifyPrice(price);
+        this.amount = verifyStockAmount(amount);
     }
 
     private String verifyNameOrDescription(String input) {
@@ -25,6 +25,20 @@ public class Item {
             throw new IllegalArgumentException("Provide a name and a description for the item");
         }
         return input;
+    }
+
+    private StockAmount verifyStockAmount(StockAmount stockAmount) {
+        if (stockAmount == null) {
+            throw new IllegalArgumentException("Stock amount cannot be null.");
+        }
+        return stockAmount;
+    }
+
+    private Price verifyPrice(Price price) {
+        if (price == null) {
+            throw new IllegalArgumentException("Price cannot be null.");
+        }
+        return price;
     }
 
     public String getItemId() {
