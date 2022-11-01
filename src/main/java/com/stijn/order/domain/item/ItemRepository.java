@@ -22,4 +22,8 @@ public class ItemRepository {
         itemRepositoryByID.put(item.getItemId(), item);
         log.info("POST -> ".concat(item.toString()));
     }
+
+    public Item findItemByItemID(String itemID) {
+        return itemRepositoryByID.get(itemID);
+    }
 }

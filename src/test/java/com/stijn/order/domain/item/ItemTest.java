@@ -73,13 +73,13 @@ class ItemTest {
 
     @Test
     void whenCreatingItemWithPriceNull_GetException() {
-        assertThatThrownBy(() -> new Item("name", "description", null,new StockAmount(100, null)))
+        assertThatThrownBy(() -> new Item("name", "description", null,new StockAmount(100, StockUnit.KG)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void whenCreatingItemWithStockAmountNull_GetException() {
-        assertThatThrownBy(() -> new Item("name", "description", null,new StockAmount(100, null)))
+        assertThatThrownBy(() -> new Item("name", "description", new Price(100, PriceCurrency.EUR),null))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
