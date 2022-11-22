@@ -1,17 +1,15 @@
 package com.stijn.order.api;
 
-import com.stijn.order.domain.item.ItemRepository;
+import com.stijn.order.repositories.ItemRepository;
 import com.stijn.order.domain.user.User;
-import com.stijn.order.domain.user.UserRepository;
-import com.stijn.order.domain.user.fields.Address;
-import com.stijn.order.domain.user.fields.PhoneNumber;
-import com.stijn.order.domain.user.fields.Role;
+import com.stijn.order.repositories.UserRepository;
+import com.stijn.order.domain.user.contactInformation.Address;
+import com.stijn.order.domain.user.contactInformation.PhoneNumber;
+import com.stijn.order.domain.user.role.Role;
 import com.stijn.order.service.item.ItemMapper;
 import com.stijn.order.service.item.dto.CreateItemDTO;
 import com.stijn.order.service.item.dto.ItemDTO;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

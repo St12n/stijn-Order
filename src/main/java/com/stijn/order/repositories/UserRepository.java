@@ -1,8 +1,9 @@
-package com.stijn.order.domain.user;
+package com.stijn.order.repositories;
 
-import com.stijn.order.domain.user.fields.Address;
-import com.stijn.order.domain.user.fields.PhoneNumber;
-import com.stijn.order.domain.user.fields.Role;
+import com.stijn.order.domain.user.User;
+import com.stijn.order.domain.user.contactInformation.Address;
+import com.stijn.order.domain.user.contactInformation.PhoneNumber;
+import com.stijn.order.domain.user.role.Role;
 import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

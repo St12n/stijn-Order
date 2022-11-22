@@ -1,6 +1,6 @@
 package com.stijn.order.api;
 
-import com.stijn.order.domain.user.UserRepository;
+import com.stijn.order.repositories.UserRepository;
 import com.stijn.order.service.user.UserMapper;
 import com.stijn.order.service.user.dto.CreateUserDTO;
 import com.stijn.order.service.user.dto.UserDTO;
@@ -12,8 +12,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-
-import java.util.Base64;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

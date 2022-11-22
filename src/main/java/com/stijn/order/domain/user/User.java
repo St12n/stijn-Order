@@ -1,11 +1,12 @@
 package com.stijn.order.domain.user;
 
-import com.stijn.order.domain.user.fields.Address;
-import com.stijn.order.domain.user.fields.Feature;
-import com.stijn.order.domain.user.fields.PhoneNumber;
-import com.stijn.order.domain.user.fields.Role;
+import com.stijn.order.domain.user.contactInformation.Address;
+import com.stijn.order.domain.user.role.Feature;
+import com.stijn.order.domain.user.contactInformation.PhoneNumber;
+import com.stijn.order.domain.user.role.Role;
 
 import java.util.UUID;
+
 
 public class User {
     private final String userID;

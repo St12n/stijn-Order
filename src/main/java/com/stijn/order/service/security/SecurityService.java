@@ -3,8 +3,8 @@ package com.stijn.order.service.security;
 import com.stijn.order.domain.exceptions.UnauthorizedException;
 import com.stijn.order.domain.exceptions.WrongPasswordException;
 import com.stijn.order.domain.user.User;
-import com.stijn.order.domain.user.UserRepository;
-import com.stijn.order.domain.user.fields.Feature;
+import com.stijn.order.repositories.UserRepository;
+import com.stijn.order.domain.user.role.Feature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,10 +24,10 @@ public class SecurityService {
     public void validateAuthorization(String authorization, Feature feature) {
         UsernamePassword usernamePassword = getUsernamePassword(authorization);
         User user = userRepository.getUserByEmail(usernamePassword.getUsername());
-//        if (user == null) {
-//            log.error("Unknown user" + usernamePassword.getUsername());
-//            throw new NoSuchElementException("Username does not exist");
-//        }
+        if (user == null) {
+            log.error("Unknown user" + usernamePassword.getUsername());
+            throw new NoSuchElementException("Username does not exist");
+        }
         if (!user.doesPasswordMatch(usernamePassword.getPassword())) {
             log.error("Password does not match for user " + usernamePassword.getUsername());
             throw new WrongPasswordException();

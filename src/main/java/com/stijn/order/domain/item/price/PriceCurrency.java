@@ -1,4 +1,4 @@
-package com.stijn.order.domain.item.fields;
+package com.stijn.order.domain.item.price;
 
 public enum PriceCurrency {
     EUR,

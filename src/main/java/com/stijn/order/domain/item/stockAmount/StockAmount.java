@@ -1,4 +1,4 @@
-package com.stijn.order.domain.item.fields;
+package com.stijn.order.domain.item.stockAmount;
 
 public class StockAmount {
     private final double amountInStock;

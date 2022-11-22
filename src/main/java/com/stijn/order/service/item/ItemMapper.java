@@ -1,10 +1,10 @@
 package com.stijn.order.service.item;
 
 import com.stijn.order.domain.item.Item;
-import com.stijn.order.domain.item.fields.Price;
-import com.stijn.order.domain.item.fields.PriceCurrency;
-import com.stijn.order.domain.item.fields.StockAmount;
-import com.stijn.order.domain.item.fields.StockUnit;
+import com.stijn.order.domain.item.price.Price;
+import com.stijn.order.domain.item.price.PriceCurrency;
+import com.stijn.order.domain.item.stockAmount.StockAmount;
+import com.stijn.order.domain.item.stockAmount.StockUnit;
 import com.stijn.order.service.item.dto.CreateItemDTO;
 import com.stijn.order.service.item.dto.ItemDTO;
 

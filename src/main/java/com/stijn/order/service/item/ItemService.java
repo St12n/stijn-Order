@@ -1,7 +1,7 @@
 package com.stijn.order.service.item;
 
 import com.stijn.order.domain.item.Item;
-import com.stijn.order.domain.item.ItemRepository;
+import com.stijn.order.repositories.ItemRepository;
 import com.stijn.order.service.item.dto.CreateItemDTO;
 import com.stijn.order.service.item.dto.ItemDTO;
 import org.springframework.stereotype.Service;

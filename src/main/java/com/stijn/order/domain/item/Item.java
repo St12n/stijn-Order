@@ -1,7 +1,7 @@
 package com.stijn.order.domain.item;
 
-import com.stijn.order.domain.item.fields.Price;
-import com.stijn.order.domain.item.fields.StockAmount;
+import com.stijn.order.domain.item.price.Price;
+import com.stijn.order.domain.item.stockAmount.StockAmount;
 
 import java.util.UUID;
 

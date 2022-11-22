@@ -1,11 +1,10 @@
 package com.stijn.order.api;
 
 import com.stijn.order.domain.user.User;
-import com.stijn.order.domain.user.UserRepository;
-import com.stijn.order.domain.user.fields.Address;
-import com.stijn.order.domain.user.fields.PhoneNumber;
-import com.stijn.order.domain.user.fields.Role;
-import com.stijn.order.service.user.dto.CreateUserDTO;
+import com.stijn.order.repositories.UserRepository;
+import com.stijn.order.domain.user.contactInformation.Address;
+import com.stijn.order.domain.user.contactInformation.PhoneNumber;
+import com.stijn.order.domain.user.role.Role;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

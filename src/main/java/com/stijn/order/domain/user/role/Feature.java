@@ -1,4 +1,4 @@
-package com.stijn.order.domain.user.fields;
+package com.stijn.order.domain.user.role;
 
 public enum Feature {
     LOGIN,

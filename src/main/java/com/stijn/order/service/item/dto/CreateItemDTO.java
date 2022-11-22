@@ -1,8 +1,5 @@
 package com.stijn.order.service.item.dto;
 
-import com.stijn.order.domain.item.fields.Price;
-import com.stijn.order.domain.item.fields.StockAmount;
-
 public class CreateItemDTO {
     private String name;
     private String description;
