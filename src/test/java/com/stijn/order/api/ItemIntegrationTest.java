@@ -12,6 +12,8 @@ import com.stijn.order.service.item.dto.ItemDTO;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ import java.util.Base64;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+@AutoConfigureTestDatabase
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ItemIntegrationTest {
 
@@ -29,28 +33,18 @@ public class ItemIntegrationTest {
 
     private final ItemMapper itemMapper = new ItemMapper();
 
+
     @Autowired
     private ItemRepository itemRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    private final User user = new User("Dude",
-            "The Second",
-            "test123@test.be",
-            new PhoneNumber("+32", "1234587"),
-            new Address("TestCity"),
-            Role.USER,
-            "password");
-
-
-
-
 
     @Test
     void createItemAsAdmin_ShouldCreateAnItem() {
 
-        String authorization = Base64.getEncoder().encodeToString("m.admin@order.be:admin".getBytes());
+        String authorization = Base64.getEncoder().encodeToString("admin@order.be:password".getBytes());
 
         CreateItemDTO given = new CreateItemDTO()
                 .setName("Beautiful Test Item")
@@ -87,7 +81,14 @@ public class ItemIntegrationTest {
 
     @Test
     void createItemAsUser_ShouldThrowUnauthorized() {
-        userRepository.saveUser(user);
+        User user = new User("Dude",
+                "The Second",
+                "test123@test.be",
+                new PhoneNumber("+32", "1234587"),
+                new Address("TestCity"),
+                Role.USER,
+                "password");
+        userRepository.save(user);
         String authorization = Base64.getEncoder().encodeToString("test123@test.be:password".getBytes());
 
         CreateItemDTO given = new CreateItemDTO()

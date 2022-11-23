@@ -6,23 +6,25 @@ import com.stijn.order.domain.order.ItemGroup;
 import com.stijn.order.repositories.ItemRepository;
 import com.stijn.order.service.order.dto.CreateItemGroupDTO;
 import com.stijn.order.service.order.dto.ReturnItemGroupDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ItemGroupMapper {
 
     private ItemRepository itemRepository;
 
-    public ItemGroupMapper() {
-        this.itemRepository = new ItemRepository();
+    public ItemGroupMapper(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     public ItemGroup itemGroupDtoToItemGroup(CreateItemGroupDTO createItemGroupDTO) {
         return new ItemGroup(
                 createItemGroupDTO.getItemID(),
                 createItemGroupDTO.getAmount(),
-                itemRepository.findItemByItemID(createItemGroupDTO.getItemID()).getPrice()
+                itemRepository.findItemByItemId(createItemGroupDTO.getItemID()).getPrice()
         );
     }
 
@@ -43,7 +45,7 @@ public class ItemGroupMapper {
     public Price mapListOfCreateItemGroupDTOToPrice(List<CreateItemGroupDTO> createItemGroupDTOList) {
         double total = 0;
         List<Price> priceList = createItemGroupDTOList.stream()
-                .map(dto -> itemRepository.findItemByItemID(dto.getItemID()).getPrice())
+                .map(dto -> itemRepository.findItemByItemId(dto.getItemID()).getPrice())
                 .toList();
 
         for (Price price : priceList) {

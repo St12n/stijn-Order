@@ -1,13 +1,21 @@
 package com.stijn.order.domain.user.contactInformation;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class PhoneNumber {
-    private final String countrycode;
-    private final String localPhoneNumber;
+    @Column(name = "mobile_phone_country_code")
+    private String countryCode;
+    @Column(name = "mobile_phone_local_phone_number")
+    private String localPhoneNumber;
 
-    public PhoneNumber(String countrycode, String localPhoneNumber) {
-        this.countrycode = countryCodeValidator(countrycode);
+    public PhoneNumber() {
+    }
+
+    public PhoneNumber(String countryCode, String localPhoneNumber) {
+        this.countryCode = countryCodeValidator(countryCode);
         this.localPhoneNumber = localPhoneNumberValidator(localPhoneNumber);
     }
 
@@ -34,17 +42,25 @@ public class PhoneNumber {
         return localPhoneNumber;
     }
 
-    public String getCountrycode() {
-        return countrycode;
+    public String getCountryCode() {
+        return countryCode;
     }
 
     public String getLocalPhoneNumber() {
         return localPhoneNumber;
     }
 
+    public void setCountryCode(String countrycode) {
+        this.countryCode = countrycode;
+    }
+
+    public void setLocalPhoneNumber(String localPhoneNumber) {
+        this.localPhoneNumber = localPhoneNumber;
+    }
+
     @Override
     public String toString() {
-        return countrycode + ' ' + localPhoneNumber;
+        return countryCode + ' ' + localPhoneNumber;
     }
 
     @Override
@@ -52,11 +68,11 @@ public class PhoneNumber {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhoneNumber that = (PhoneNumber) o;
-        return Objects.equals(countrycode, that.countrycode) && Objects.equals(localPhoneNumber, that.localPhoneNumber);
+        return Objects.equals(countryCode, that.countryCode) && Objects.equals(localPhoneNumber, that.localPhoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(countrycode, localPhoneNumber);
+        return Objects.hash(countryCode, localPhoneNumber);
     }
 }

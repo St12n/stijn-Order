@@ -1,8 +1,20 @@
 package com.stijn.order.domain.item.price;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+@Embeddable
 public class Price {
-    private final double priceAmount;
-    private final PriceCurrency priceCurrency;
+    @Column(name = "PRICE_AMOUNT")
+    private double priceAmount;
+    @Column(name = "PRICE_CURRENCY")
+    @Enumerated(EnumType.STRING)
+    private PriceCurrency priceCurrency;
+
+    public Price() {
+    }
 
     public Price(double priceAmount, PriceCurrency priceCurrency) {
         this.priceAmount = verifyPriceAmount(priceAmount);
@@ -21,6 +33,14 @@ public class Price {
             throw new IllegalArgumentException("Provide a currency for the price.");
         }
         return priceCurrency;
+    }
+
+    public void setPriceAmount(double priceAmount) {
+        this.priceAmount = priceAmount;
+    }
+
+    public void setPriceCurrency(PriceCurrency priceCurrency) {
+        this.priceCurrency = priceCurrency;
     }
 
     public double getPriceAmount() {

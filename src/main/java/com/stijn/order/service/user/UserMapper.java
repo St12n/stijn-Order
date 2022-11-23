@@ -14,7 +14,7 @@ public class UserMapper {
                 .setFirstname(user.getFirstname())
                 .setLastname(user.getLastname())
                 .setEmail(user.getEmail())
-                .setCountryCode(user.getPhoneNumber().getCountrycode())
+                .setCountryCode(user.getPhoneNumber().getCountryCode())
                 .setLocalPhoneNumber(user.getPhoneNumber().getLocalPhoneNumber())
                 .setAddress(user.getAddress().toString());
     }

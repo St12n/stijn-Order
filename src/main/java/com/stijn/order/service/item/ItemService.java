@@ -19,7 +19,7 @@ public class ItemService {
 
     public ItemDTO saveItem(CreateItemDTO createItemDTO) {
         Item newItem = itemMapper.mapCreateItemDTOToItem(createItemDTO);
-        itemRepository.saveItemToRepo(newItem);
+        itemRepository.save(newItem);
         return itemMapper.mapItemToItemDTO(newItem);
     }
 }

@@ -23,7 +23,7 @@ public class SecurityService {
 
     public void validateAuthorization(String authorization, Feature feature) {
         UsernamePassword usernamePassword = getUsernamePassword(authorization);
-        User user = userRepository.getUserByEmail(usernamePassword.getUsername());
+        User user = userRepository.findUserByEmail(usernamePassword.getUsername());
         if (user == null) {
             log.error("Unknown user" + usernamePassword.getUsername());
             throw new NoSuchElementException("Username does not exist");

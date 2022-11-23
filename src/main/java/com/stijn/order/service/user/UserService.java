@@ -18,8 +18,11 @@ public class UserService {
     }
 
     public UserDTO saveUser(CreateUserDTO createUserDTO) {
+        if (userRepository.findUserByEmail(createUserDTO.getEmail()) != null) {
+            throw new IllegalArgumentException("This email address is already linked to another account.");
+        }
         User newUser = userMapper.mapCreateUserDTOToUser(createUserDTO);
-        userRepository.saveUser(newUser);
+        userRepository.save(newUser);
         return userMapper.mapUserToDTO(newUser);
     }
 }

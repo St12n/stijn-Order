@@ -5,21 +5,37 @@ import com.stijn.order.domain.user.role.Feature;
 import com.stijn.order.domain.user.contactInformation.PhoneNumber;
 import com.stijn.order.domain.user.role.Role;
 
-import java.util.UUID;
+import javax.persistence.*;
+import java.util.Objects;
 
 
+@Entity
+@Table(name = "USERS")
 public class User {
-    private final String userID;
-    private final String firstname;
-    private final String lastname;
-    private final String email;
-    private final PhoneNumber phoneNumber;
-    private final Address address;
-    private final Role role;
-    private final String password;
+
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
+    private Long userID;
+    private String firstname;
+    private String lastname;
+    private String email;
+    @Embedded
+    private PhoneNumber phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_address_id")
+    private Address address;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @Column(name = "PASSWORD")
+    private String password;
+
+    public User() {
+    }
 
     public User(String firstname, String lastname, String email, PhoneNumber phoneNumber, Address address, Role role, String password) {
-        this.userID = UUID.randomUUID().toString();
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -36,6 +52,7 @@ public class User {
     public boolean canHaveAccessTo(Feature feature) {
         return role.containsFeature(feature);
     }
+
     public String getFirstname() {
         return firstname;
     }
@@ -60,7 +77,7 @@ public class User {
         return role;
     }
 
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
@@ -79,6 +96,19 @@ public class User {
                 ", address=" + address +
                 ", role=" + role +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(address, user.address) && role == user.role && Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userID, firstname, lastname, email, phoneNumber, address, role, password);
     }
 }
 

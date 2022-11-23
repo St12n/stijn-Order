@@ -1,13 +1,30 @@
 package com.stijn.order.domain.user.contactInformation;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "ADDRESS")
 public class Address {
-    private final String streetname;
-    private final String housenumber;
-    private final String boxNumber;
-    private final String city;
-    private final String postalCode;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
+    @SequenceGenerator(name = "address_seq", sequenceName = "address_seq", allocationSize = 1)
+    private Long id;
+
+    @Column(name = "STREETNAME")
+    private String streetname;
+    @Column(name = "HOUSENUMBER")
+    private String housenumber;
+    @Column(name = "BOXNUMBER")
+    private String boxNumber;
+    @Column(name = "CITY")
+    private String city;
+    @Column(name = "POSTALCODE")
+    private String postalCode;
+
+    public Address() {
+    }
 
     public Address(String streetname, String housenumber, String boxNumber, String city, String postalCode) {
         this.streetname = streetname;

@@ -26,7 +26,7 @@ class UserTest {
         assertThat(user.getEmail().equals("timv@test.be"));
         assertThat(user.getAddress()).isNotNull();
         assertThat(user.getPhoneNumber().getLocalPhoneNumber()).isEqualTo("0478945");
-        assertThat(user.getPhoneNumber().getCountrycode()).isEqualTo("0032");
+        assertThat(user.getPhoneNumber().getCountryCode()).isEqualTo("0032");
         assertThat(user.getAddress().getStreetname()).isEqualTo("Timstraat");
         assertThat(user.getAddress().getHousenumber()).isEqualTo("123a");
         assertThat(user.getAddress().getBoxNumber()).isEqualTo("1");

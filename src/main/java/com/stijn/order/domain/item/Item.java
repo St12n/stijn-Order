@@ -3,17 +3,29 @@ package com.stijn.order.domain.item;
 import com.stijn.order.domain.item.price.Price;
 import com.stijn.order.domain.item.stockAmount.StockAmount;
 
-import java.util.UUID;
+import javax.persistence.*;
 
+@Entity
 public class Item {
-    private final String ItemId;
-    private final String name;
-    private final String description;
-    private final Price price;
-    private final StockAmount amount;
+
+    @Id
+    @Column(name = "ITEM_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq")
+    @SequenceGenerator(name = "item_seq", sequenceName = "item_seq", allocationSize = 1)
+    private Long itemId;
+    @Column(name = "ITEM_NAME")
+    private String name;
+    @Column(name = "ITEM_DESCRIPTION")
+    private String description;
+    @Embedded
+    private Price price;
+    @Embedded
+    private StockAmount amount;
+
+    public Item() {
+    }
 
     public Item(String name, String description, Price price, StockAmount amount) {
-        this.ItemId = UUID.randomUUID().toString();
         this.name = verifyNameOrDescription(name);
         this.description = verifyNameOrDescription(description);
         this.price = verifyPrice(price);
@@ -41,10 +53,6 @@ public class Item {
         return price;
     }
 
-    public String getItemId() {
-        return ItemId;
-    }
-
     public String getName() {
         return name;
     }
@@ -64,7 +72,7 @@ public class Item {
     @Override
     public String toString() {
         return "Item{" +
-                "ItemId='" + ItemId + '\'' +
+                "ItemId='" + itemId + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

@@ -15,7 +15,6 @@ public class CreateUserDTO {
     private String boxNumber;
     private String city;
     private String postalCode;
-    private Address address;
 
     public String getCountryCode() {
         return countryCode;
@@ -84,10 +83,6 @@ public class CreateUserDTO {
         return this;
     }
 
-    public CreateUserDTO setAddress(Address address) {
-        this.address = address;
-        return this;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -121,7 +116,4 @@ public class CreateUserDTO {
         return postalCode;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 }
