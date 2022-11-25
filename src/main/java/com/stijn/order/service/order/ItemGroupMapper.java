@@ -1,4 +1,4 @@
-package com.stijn.order.service.item;
+package com.stijn.order.service.order;
 
 import com.stijn.order.domain.item.price.Price;
 import com.stijn.order.domain.item.price.PriceCurrency;
@@ -40,18 +40,6 @@ public class ItemGroupMapper {
         return createItemGroupDTOList.stream()
                 .map(this::itemGroupDtoToItemGroup)
                 .collect(Collectors.toList());
-    }
-
-    public Price mapListOfCreateItemGroupDTOToPrice(List<CreateItemGroupDTO> createItemGroupDTOList) {
-        double total = 0;
-        List<Price> priceList = createItemGroupDTOList.stream()
-                .map(dto -> itemRepository.findItemByItemId(dto.getItemID()).getPrice())
-                .toList();
-
-        for (Price price : priceList) {
-            total += price.getPriceAmount();
-        }
-        return new Price(total, PriceCurrency.EUR);
     }
 
 }

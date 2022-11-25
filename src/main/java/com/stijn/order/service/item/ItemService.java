@@ -6,7 +6,10 @@ import com.stijn.order.service.item.dto.CreateItemDTO;
 import com.stijn.order.service.item.dto.ItemDTO;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class ItemService {
 
     private final ItemRepository itemRepository;

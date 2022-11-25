@@ -1,8 +1,6 @@
 package com.stijn.order.service.order;
 
 import com.stijn.order.domain.order.Order;
-import com.stijn.order.repositories.UserRepository;
-import com.stijn.order.service.item.ItemGroupMapper;
 import com.stijn.order.service.order.dto.CreateOrderDTO;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +15,7 @@ public class OrderMapper {
 
     public Order mapCreateOrderDTOToOrder(CreateOrderDTO createOrderDTO) {
         return new Order(
-                itemGroupMapper.mapListOfCreateItemGroupDTOToListOfItemGroup(createOrderDTO.getListOfItemGroups()),
-                itemGroupMapper.mapListOfCreateItemGroupDTOToPrice(createOrderDTO.getListOfItemGroups())
+                itemGroupMapper.mapListOfCreateItemGroupDTOToListOfItemGroup(createOrderDTO.getListOfItemGroups())
         );
     }
 }

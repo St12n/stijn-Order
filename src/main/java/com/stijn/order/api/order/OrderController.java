@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     private final Logger log = LoggerFactory.getLogger(OrderController.class);
-
     private final OrderService orderService;
     private final SecurityService securityService;
 

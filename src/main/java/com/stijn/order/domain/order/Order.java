@@ -1,6 +1,7 @@
 package com.stijn.order.domain.order;
 
 import com.stijn.order.domain.item.price.Price;
+import com.stijn.order.domain.item.price.PriceCurrency;
 
 
 import javax.persistence.*;
@@ -16,14 +17,21 @@ public class Order {
     @SequenceGenerator(name = "order_seq", sequenceName = "order_seq", allocationSize = 1)
     private Long orderID;
 
-    @OneToMany
-    @JoinTable(name = "fk_order")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "FK_ORDER_ID")
     private List<ItemGroup> itemGroupList;
+
+    @Embedded
     private Price totalPrice;
 
-    public Order(List<ItemGroup> itemGroupList, Price totalPrice) {
+    public Order() {
+    }
+
+    public Order(List<ItemGroup> itemGroupList) {
         this.itemGroupList = itemGroupList;
-        this.totalPrice = totalPrice;
+        this.totalPrice = itemGroupList.stream()
+                .map(item -> item.getPrice())
+                .reduce(new Price(0, PriceCurrency.EUR),(p1, p2) -> new Price(p1.getPriceAmount() + p2.getPriceAmount(),p1.getPriceCurrency()));
     }
 
    public List<ItemGroup> getItemGroupList() {

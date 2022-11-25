@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Itemgroups")
+@Table(name = "ITEMGROUPS")
 public class ItemGroup {
 
     @Id
@@ -19,13 +19,17 @@ public class ItemGroup {
     @Column(name = "ORDERED_ITEM_ID")
     private Long itemID;
 
-    @Column(name = "ORDER_LINE_AMOUNT")
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "amountInStock", column = @Column( name = "ORDER_AMOUNT")),
+            @AttributeOverride(name = "stockUnit", column = @Column( name = "ORDER_UNIT"))
+    })
     private StockAmount amount;
 
     @Column(name = "SHIPPING_DATE")
     private LocalDate shippingDate;
 
-    @Column(name = "ORDER_LINE_PRICE")
+    @Embedded
     private Price price;
 
     public ItemGroup() {
