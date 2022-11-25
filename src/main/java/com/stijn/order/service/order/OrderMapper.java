@@ -9,19 +9,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderMapper {
 
-    private final UserRepository userRepository;
     private final ItemGroupMapper itemGroupMapper;
 
-    public OrderMapper(UserRepository userRepository, ItemGroupMapper itemGroupMapper) {
-        this.userRepository = userRepository;
+    public OrderMapper(ItemGroupMapper itemGroupMapper) {
         this.itemGroupMapper = itemGroupMapper;
     }
 
     public Order mapCreateOrderDTOToOrder(CreateOrderDTO createOrderDTO) {
         return new Order(
                 itemGroupMapper.mapListOfCreateItemGroupDTOToListOfItemGroup(createOrderDTO.getListOfItemGroups()),
-                itemGroupMapper.mapListOfCreateItemGroupDTOToPrice(createOrderDTO.getListOfItemGroups()),
-                userRepository.findUserByEmail(createOrderDTO.getUserEmail())
+                itemGroupMapper.mapListOfCreateItemGroupDTOToPrice(createOrderDTO.getListOfItemGroups())
         );
     }
 }

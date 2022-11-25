@@ -6,7 +6,7 @@ import com.stijn.order.domain.user.contactInformation.Address;
 import com.stijn.order.domain.user.contactInformation.PhoneNumber;
 import com.stijn.order.domain.user.role.Role;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -27,31 +27,10 @@ public class SecurityIntegrationTest {
     @Autowired
     UserRepository userRepository;
 
-
-//    @BeforeAll
-//    void saveUserToRepo() {
-//        User user = new User(
-//                "Dude",
-//                "The Second",
-//                "test@test.be",
-//                new PhoneNumber("+32", "1234587"),
-//                new Address("TestCity"),
-//                Role.USER,
-//                "password");
-//
-//        User user2 = new User(
-//                "Dude",
-//                "The Third",
-//                "test2@test.be",
-//                new PhoneNumber("+32", "12345889"),
-//                new Address("TestCity"),
-//                Role.TEST,
-//                "password");
-//
-//        userRepository.findAll().clear();
-//        userRepository.save(user);
-//        userRepository.save(user2);
-//    }
+    @AfterEach
+    void tearDown() {
+        userRepository.deleteAll();
+    }
 
     @Test
     void loginAsUserWithValidCredentiols() {
@@ -63,6 +42,8 @@ public class SecurityIntegrationTest {
                 new Address("TestCity"),
                 Role.USER,
                 "password");
+
+        userRepository.save(user);
 
         String authorization = Base64.getEncoder().encodeToString(user.getEmail().concat(":").concat(user.getPassword()).getBytes());
 
@@ -176,6 +157,9 @@ public class SecurityIntegrationTest {
                 new Address("TestCity"),
                 Role.TEST,
                 "password");
+
+        userRepository.save(user);
+        userRepository.save(user2);
 
         String authorization = Base64.getEncoder().encodeToString(user2.getEmail().concat(":").concat(user2.getPassword()).getBytes());
 
