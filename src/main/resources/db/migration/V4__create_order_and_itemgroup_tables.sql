@@ -16,7 +16,7 @@ create table itemgroups
     ordered_item_id bigint not null,
     order_amount    double precision,
     order_unit      varchar(52),
-    shipping_date varchar(52),
+    shipping_date date,
     price_amount double precision not null,
     price_currency varchar(52) not null
 );
@@ -28,7 +28,7 @@ CREATE SEQUENCE order_seq
     MAXVALUE 10000
     cycle;
 
-CREATE SEQUENCE itemGroup_seq
+CREATE SEQUENCE item_group_seq
     START WITH 1
     INCREMENT BY 1
     MINVALUE 1

@@ -29,7 +29,6 @@ public class OrderService {
     }
 
 
-    //todo: implement order -> dto's, mapper and service.
     public ItemDTO saveOrder(CreateOrderDTO createOrderDTO) {
         Order orderToSave = orderMapper.mapCreateOrderDTOToOrder(createOrderDTO);
         orderRepository.save(orderToSave);

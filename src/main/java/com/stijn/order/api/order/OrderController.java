@@ -27,7 +27,7 @@ public class OrderController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDTO saveOrder(@RequestHeader String authorization, @RequestBody CreateOrderDTO createOrderDTO) {
-        securityService.validateAuthorization(authorization, Feature.CREATE_ITEM);
+        securityService.validateAuthorization(authorization, Feature.ORDER_ITEM);
         log.info("POST -> ItemController post a new item");
         return orderService.saveOrder(createOrderDTO);
     }

@@ -12,8 +12,8 @@ public class ItemGroup {
 
     @Id
     @Column(name = "ITEMGROUP_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "itemGroup_seq")
-    @SequenceGenerator(name = "itemGroup_seq", sequenceName = "itemGroup_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_group_seq")
+    @SequenceGenerator(name = "item_group_seq", sequenceName = "item_group_seq", allocationSize = 1)
     private Long itemGroupID;
 
     @Column(name = "ORDERED_ITEM_ID")

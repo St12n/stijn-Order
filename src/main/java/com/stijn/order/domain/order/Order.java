@@ -1,11 +1,9 @@
 package com.stijn.order.domain.order;
 
 import com.stijn.order.domain.item.price.Price;
-import com.stijn.order.domain.item.price.PriceCurrency;
-
-
 import javax.persistence.*;
 import java.util.List;
+import static com.stijn.order.domain.item.price.Price.eur;
 
 @Entity
 @Table(name = "ORDERS")
@@ -29,12 +27,21 @@ public class Order {
 
     public Order(List<ItemGroup> itemGroupList) {
         this.itemGroupList = itemGroupList;
+//        this.totalPrice = calculateTotalPrice(itemGroupList);
         this.totalPrice = itemGroupList.stream()
                 .map(item -> item.getPrice())
-                .reduce(new Price(0, PriceCurrency.EUR),(p1, p2) -> new Price(p1.getPriceAmount() + p2.getPriceAmount(),p1.getPriceCurrency()));
+                .reduce(eur(0), (p1, p2) -> p1.add(p2));
     }
 
-   public List<ItemGroup> getItemGroupList() {
+//    private Price calculateTotalPrice(List<ItemGroup> itemGroupList) {
+//        double priceAmount = 0;
+//        for (ItemGroup itemGroup : itemGroupList) {
+//            priceAmount = priceAmount + itemGroup.getPrice().getPriceAmount();
+//        }
+//        return new Price(priceAmount, PriceCurrency.EUR);
+//    }
+
+    public List<ItemGroup> getItemGroupList() {
         return itemGroupList;
     }
 

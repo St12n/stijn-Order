@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.util.Objects;
 
 @Embeddable
 public class Price {
@@ -21,9 +22,17 @@ public class Price {
         this.priceCurrency = verifyPriceCurrency(priceCurrency);
     }
 
+    public Price add(Price otherPrice) {
+        return new Price(priceAmount + otherPrice.priceAmount, priceCurrency);
+    }
+
+    public static Price eur(int amount) {
+        return new Price(amount, PriceCurrency.EUR);
+    }
+
     private double verifyPriceAmount(double priceAmount){
-        if (priceAmount <= 0) {
-            throw new IllegalArgumentException("Price cannot be zero or negative.");
+        if (priceAmount < 0) {
+            throw new IllegalArgumentException("Price cannot be negative.");
         }
         return priceAmount;
     }
@@ -49,6 +58,19 @@ public class Price {
 
     public PriceCurrency getPriceCurrency() {
         return priceCurrency;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Price price = (Price) o;
+        return Double.compare(price.priceAmount, priceAmount) == 0 && priceCurrency == price.priceCurrency;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(priceAmount, priceCurrency);
     }
 
     @Override
